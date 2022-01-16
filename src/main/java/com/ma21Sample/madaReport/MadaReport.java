@@ -1,4 +1,4 @@
-package com.ma21Sample.sample;
+package com.ma21Sample.madaReport;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
