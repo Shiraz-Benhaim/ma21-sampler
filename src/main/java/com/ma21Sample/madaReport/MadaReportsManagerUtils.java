@@ -2,6 +2,7 @@ package com.ma21Sample.madaReport;
 
 import com.ma21Sample.exceptions.FailedToParseDataFileException;
 import com.ma21Sample.exceptions.FailedToWriteDataFileException;
+import com.ma21Sample.fieldEnums.IdTypes;
 
 import java.util.List;
 

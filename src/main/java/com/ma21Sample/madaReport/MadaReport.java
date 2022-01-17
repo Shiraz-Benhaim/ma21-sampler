@@ -1,5 +1,6 @@
 package com.ma21Sample.madaReport;
 
+import com.ma21Sample.fieldEnums.IdTypes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

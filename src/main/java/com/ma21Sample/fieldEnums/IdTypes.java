@@ -1,4 +1,4 @@
-package com.ma21Sample.madaReport;
+package com.ma21Sample.fieldEnums;
 
 public enum IdTypes {
     ISRAELI_ID(0),

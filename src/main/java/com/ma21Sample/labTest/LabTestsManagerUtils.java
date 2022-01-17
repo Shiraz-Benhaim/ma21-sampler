@@ -1,7 +1,9 @@
 package com.ma21Sample.labTest;
 
 import com.ma21Sample.exceptions.FailedToParseDataFileException;
-import com.ma21Sample.madaReport.IdTypes;
+import com.ma21Sample.fieldEnums.ResultsTypesTestCorona;
+import com.ma21Sample.fieldEnums.IdTypes;
+import com.ma21Sample.fieldEnums.TestTypes;
 
 import java.util.List;
 

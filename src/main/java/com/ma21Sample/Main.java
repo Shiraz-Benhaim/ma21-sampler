@@ -5,6 +5,9 @@ import com.ma21Sample.dataFile.DataFileWriter;
 import com.ma21Sample.dataFile.csv.CSVFileParser;
 import com.ma21Sample.dataFile.json.JsonFileWriter;
 import com.ma21Sample.fileHandler.CreateDirectory;
+import com.ma21Sample.labTest.LabTest;
+import com.ma21Sample.labTest.LabTestsManager;
+import com.ma21Sample.labTest.LabTestsManagerUtils;
 import com.ma21Sample.madaReport.MadaReportsManager;
 import com.ma21Sample.madaReport.MadaReportsManagerUtils;
 
@@ -16,6 +19,7 @@ public class Main {
     public static final String csvLabTestsPath = "src\\main\\resources\\LabTests.csv";
 
     public static void main(String[] args) {
+        /*
         try {
             // Export
             MadaReportsManagerUtils managerUtils = new MadaReportsManagerUtils();
@@ -29,6 +33,18 @@ public class Main {
 
             DataFileWriter jsonFileWriter = new JsonFileWriter(jsonDir + jsonFileName, madaReportsManager);
             jsonFileWriter.writeObjectToDataFile();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        */
+
+        // Part B
+        try {
+            // Export
+            LabTestsManagerUtils utils = new LabTestsManagerUtils();
+            DataFileParser csvFileParser = new CSVFileParser(csvLabTestsPath);
+            LabTestsManager labTestsManager = utils.
+                    listsToLabTestsManager(csvFileParser.parseDataFileToLists());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
