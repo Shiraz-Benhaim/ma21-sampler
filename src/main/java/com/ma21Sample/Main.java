@@ -8,6 +8,7 @@ import com.ma21Sample.madaReport.MadaReportsManagerUtils;
 
 public class Main {
     public static final String csvPath = "src\\main\\resources\\MadaReports.csv";
+    public static final String jsonPath = "mada_reports\\MadaReports.json";
 
     public static void main(String[] args) {
         MadaReportsManagerUtils managerUtils = new MadaReportsManagerUtils();
