@@ -3,6 +3,7 @@ package com.ma21Sample.dataFile;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @Data
@@ -10,5 +11,5 @@ import java.util.List;
 public abstract class DataFileParser {
     protected String srcFile;
 
-    public abstract List<String[]> parseDataFileToLists();
+    public abstract List<String[]> parseDataFileToLists() throws FileNotFoundException;
 }

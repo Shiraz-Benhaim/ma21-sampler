@@ -1,6 +1,7 @@
 package com.ma21Sample.dataFile.csv;
 
 import com.ma21Sample.dataFile.DataFileParser;
+import com.ma21Sample.exceptions.CSVFileNotExistException;
 import com.ma21Sample.fileHandler.ReadFileContent;
 import com.ma21Sample.utils.StringSplitter;
 
@@ -12,7 +13,7 @@ public class CSVFileParser extends DataFileParser {
     }
 
     @Override
-    public List<String[]> parseDataFileToLists() {
+    public List<String[]> parseDataFileToLists() throws CSVFileNotExistException {
         List<String[]> data = null;
         StringSplitter stringSplitter = new StringSplitter();
 
@@ -21,7 +22,7 @@ public class CSVFileParser extends DataFileParser {
             data = stringSplitter.splitStringInCsvFormat(readFileContent.readContent());
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new CSVFileNotExistException(e.getMessage());
         }
 
         return data;

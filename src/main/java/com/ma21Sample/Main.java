@@ -14,17 +14,22 @@ public class Main {
     public static final String jsonFileName = "MadaReports.json";
 
     public static void main(String[] args) {
-        // Export
-        MadaReportsManagerUtils managerUtils = new MadaReportsManagerUtils();
-        DataFileParser csvFileParser = new CSVFileParser(csvPath);
-        MadaReportsManager madaReportsManager = managerUtils.
-                listsToMadaReportsManager(csvFileParser.parseDataFileToLists());
 
-        // Load
-        CreateDirectory createDirectory = new CreateDirectory(jsonDir);
-        createDirectory.createDirIfNotExisting();
+        try {
+            // Export
+            MadaReportsManagerUtils managerUtils = new MadaReportsManagerUtils();
+            DataFileParser csvFileParser = new CSVFileParser(csvPath);
+            MadaReportsManager madaReportsManager = managerUtils.
+                    listsToMadaReportsManager(csvFileParser.parseDataFileToLists());
 
-        DataFileWriter jsonFileWriter = new JsonFileWriter(jsonDir + jsonFileName, madaReportsManager);
-        jsonFileWriter.writeObjectToDataFile();
+            // Load
+            CreateDirectory createDirectory = new CreateDirectory(jsonDir);
+            createDirectory.createDirIfNotExisting();
+
+            DataFileWriter jsonFileWriter = new JsonFileWriter(jsonDir + jsonFileName, madaReportsManager);
+            jsonFileWriter.writeObjectToDataFile();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
