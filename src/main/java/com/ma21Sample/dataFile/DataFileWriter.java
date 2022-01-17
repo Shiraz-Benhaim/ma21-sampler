@@ -10,5 +10,5 @@ import java.util.List;
 public abstract class DataFileWriter {
     protected String dstFile;
 
-    public abstract List<String[]> writeObjectToDataFile();
+    public abstract void writeObjectToDataFile();
 }
