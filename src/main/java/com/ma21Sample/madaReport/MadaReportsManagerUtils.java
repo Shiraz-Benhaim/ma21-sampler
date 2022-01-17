@@ -17,13 +17,13 @@ public class MadaReportsManagerUtils {
                 reportsManager.addMadaReport(new MadaReport(
                     record[MadaReportFieldsIndex.MDA_CODE.getIndex()],
                     Integer.parseInt(record[MadaReportFieldsIndex.ID_NUM.getIndex()]),
-                    Integer.parseInt(record[MadaReportFieldsIndex.ID_TYPE.getIndex()]),
+                    IdTypes.values()[Integer.parseInt(record[MadaReportFieldsIndex.ID_TYPE.getIndex()])],
                     record[MadaReportFieldsIndex.FIRST_NAME.getIndex()],
                     record[MadaReportFieldsIndex.LAST_NAME.getIndex()],
                     record[MadaReportFieldsIndex.CITY.getIndex()],
                     record[MadaReportFieldsIndex.STREET.getIndex()],
                     Integer.parseInt(record[MadaReportFieldsIndex.BUILDING_NUMBER.getIndex()]),
-                    record[MadaReportFieldsIndex.BAR_CODE.getIndex()],
+                    record[MadaReportFieldsIndex.BARCODE.getIndex()],
                     record[MadaReportFieldsIndex.GET_DATE.getIndex()],
                     record[MadaReportFieldsIndex.TAKE_DATE.getIndex()],
                     record[MadaReportFieldsIndex.RESULT_DATE.getIndex()]

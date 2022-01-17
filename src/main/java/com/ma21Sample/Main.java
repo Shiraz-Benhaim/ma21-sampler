@@ -16,7 +16,8 @@ public class Main {
                 listsToMadaReportsManager(csvFileParser.parseDataFileToLists());
 
         for (MadaReport report : madaReportsManager.getReports()) {
-            System.out.println(report.getFirstName() + " " + report.getLastName());
+            System.out.println(report.getFirstName() + " " + report.getLastName()
+            + " Type: " + report.getIDType().name());
         }
     }
 }

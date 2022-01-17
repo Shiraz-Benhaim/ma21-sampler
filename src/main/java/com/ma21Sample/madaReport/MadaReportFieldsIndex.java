@@ -9,7 +9,7 @@ public enum MadaReportFieldsIndex {
     CITY(5),
     STREET(6),
     BUILDING_NUMBER(7),
-    BAR_CODE(8),
+    BARCODE(8),
     GET_DATE(9),
     TAKE_DATE(10),
     RESULT_DATE(11);

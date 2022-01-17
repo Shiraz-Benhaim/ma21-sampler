@@ -8,7 +8,7 @@ import lombok.Data;
 public class MadaReport {
     private String MDACODE;
     private Integer IDNum;
-    private Integer IDType;
+    private IdTypes IDType;
     private String FirstName;
     private String LastName;
     private String City;
