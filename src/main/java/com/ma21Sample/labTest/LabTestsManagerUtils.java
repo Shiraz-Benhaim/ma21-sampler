@@ -19,7 +19,7 @@ public class LabTestsManagerUtils {
 
         try {
             for (String[] record : resultsData) {
-                labTestsManager.addLabTest(new LabTest(
+                labTestsManager.addLabTest(new LabTestBuilder(
                         Integer.parseInt(record[LabTestFieldsIndex.ID_NUM.getIndex()]),
                         IdTypes.values()[Integer.parseInt(record[LabTestFieldsIndex.ID_TYPE.getIndex()])],
                         record[LabTestFieldsIndex.FIRST_NAME.getIndex()],
@@ -32,7 +32,7 @@ public class LabTestsManagerUtils {
                                 parseInt(record[LabTestFieldsIndex.RESULT_TEST_CORONA.getIndex()])],
                         record[LabTestFieldsIndex.VARIANT.getIndex()],
                         TestTypes.valueOf(record[LabTestFieldsIndex.TEST_TYPE.getIndex()])
-                ));
+                ).build());
             }
         } catch (Exception e) {
             throw new FailedToParseDataFileException(e.getMessage(), e.getCause());
