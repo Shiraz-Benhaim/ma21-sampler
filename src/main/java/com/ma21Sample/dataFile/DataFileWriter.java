@@ -1,5 +1,6 @@
 package com.ma21Sample.dataFile;
 
+import com.ma21Sample.exceptions.FailedToWriteDataFileException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,5 +9,5 @@ import lombok.Data;
 public abstract class DataFileWriter {
     protected String dstFile;
 
-    public abstract void writeObjectToDataFile();
+    public abstract void writeObjectToDataFile() throws FailedToWriteDataFileException;
 }

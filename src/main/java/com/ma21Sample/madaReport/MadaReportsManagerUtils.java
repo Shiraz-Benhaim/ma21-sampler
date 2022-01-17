@@ -1,6 +1,7 @@
 package com.ma21Sample.madaReport;
 
 import com.ma21Sample.exceptions.FailedToParseDataFileException;
+import com.ma21Sample.exceptions.FailedToWriteDataFileException;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class MadaReportsManagerUtils {
      * reportsInEachList - the number of reports in each of the new sub lists
      * returns list of lists of reports
      * */
-    public MadaReportsManager[] splitMadaReportsManager(MadaReportsManager reports, Integer reportsInEachList) {
+    public MadaReportsManager[] splitMadaReportsManager(MadaReportsManager reports, Integer reportsInEachList) throws FailedToWriteDataFileException {
         int numOfSplits = reports.numOfReports() / reportsInEachList +
                 (reports.numOfReports() % reportsInEachList == 0 ? 0 : 1); // for the rest
         MadaReportsManager[] subReportsManagers = new MadaReportsManager[numOfSplits];

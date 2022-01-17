@@ -2,6 +2,7 @@ package com.ma21Sample.dataFile.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ma21Sample.dataFile.DataFileWriter;
+import com.ma21Sample.exceptions.FailedToWriteDataFileException;
 import com.ma21Sample.madaReport.MadaReportsManager;
 import com.ma21Sample.madaReport.MadaReportsManagerUtils;
 
@@ -26,7 +27,7 @@ public class JsonFileWriter extends DataFileWriter {
     }
 
     @Override
-    public void writeObjectToDataFile() {
+    public void writeObjectToDataFile() throws FailedToWriteDataFileException {
         ObjectMapper objectMapper = new ObjectMapper();
         MadaReportsManagerUtils reportsManagerUtils = new MadaReportsManagerUtils();
         MadaReportsManager[] madaReportsManagers;
@@ -43,7 +44,7 @@ public class JsonFileWriter extends DataFileWriter {
                 objectMapper.writeValue(new File(currPathName), madaReportsManagers[i]);
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new FailedToWriteDataFileException(e.getMessage(), e.getCause());
         }
     }
 }
