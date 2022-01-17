@@ -14,7 +14,6 @@ public class Main {
     public static final String jsonFileName = "MadaReports.json";
 
     public static void main(String[] args) {
-
         try {
             // Export
             MadaReportsManagerUtils managerUtils = new MadaReportsManagerUtils();
