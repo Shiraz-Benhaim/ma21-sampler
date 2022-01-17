@@ -7,13 +7,13 @@ import lombok.Data;
 @AllArgsConstructor
 public class MadaReport {
     private String MDACODE;
-    private String IDNum;
-    private String IDType;
+    private Integer IDNum;
+    private Integer IDType;
     private String FirstName;
     private String LastName;
     private String City;
     private String Street;
-    private String BuildingNumber;
+    private Integer BuildingNumber;
     private String Barcode;
     private String GetDate;
     private String TakeDate;

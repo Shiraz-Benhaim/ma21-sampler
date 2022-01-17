@@ -6,7 +6,7 @@ import java.util.List;
 
 public class StringSplitter {
     private final String csvRowSeparator = "\n";
-    private final String csvFieldsSeparator = "\",\"";
+    private final String csvFieldsSeparator = ",";
 
     /*
     * Splits a string that written in csv format, to list of items
@@ -15,12 +15,11 @@ public class StringSplitter {
     * */
     public List<String[]> splitStringInCsvFormat(String content) {
         List<String[]> result = new ArrayList<>();
+        content = content.replace("\r", "");
 
         String[] lines = content.split(this.csvRowSeparator);
-
         Arrays.asList(lines).subList(1, lines.length - 1)
-                .forEach(line -> result.add(line.substring(1, line.length() - 1)
-                        .split(csvFieldsSeparator)));
+                .forEach(line -> result.add(line.split(csvFieldsSeparator)));
 
         return result;
     }
