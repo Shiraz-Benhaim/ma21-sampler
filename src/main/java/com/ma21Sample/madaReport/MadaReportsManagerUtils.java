@@ -35,4 +35,29 @@ public class MadaReportsManagerUtils {
 
         return reportsManager;
     }
+
+    /*
+     * Function split a list of mada's reports to sub lists
+     * cars - the list of all reports
+     * reportsInEachList - the number of reports in each of the new sub lists
+     * returns list of lists of reports
+     * */
+    public MadaReportsManager[] splitMadaReportsManager (MadaReportsManager reports, Integer reportsInEachList) {
+        int numOfSplits = reports.numOfReports() / reportsInEachList +
+                (reports.numOfReports() % reportsInEachList == 0 ? 0 : 1); // for the rest
+        MadaReportsManager[] subReportsManagers = new MadaReportsManager[numOfSplits];
+        int currEnd;
+
+        for (int i = 0; i < numOfSplits; i++) {
+            currEnd = (i + 1) * reportsInEachList;
+            if (currEnd >= reports.numOfReports()) {
+                currEnd = reports.numOfReports() - 1;
+            }
+            subReportsManagers[i] = new MadaReportsManager(
+                    reports.getReports().subList(i * reportsInEachList, currEnd)
+            );
+        }
+
+        return subReportsManagers;
+    }
 }
