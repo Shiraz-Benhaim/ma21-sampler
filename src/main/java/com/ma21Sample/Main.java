@@ -9,15 +9,17 @@ import com.ma21Sample.madaReport.MadaReportsManager;
 import com.ma21Sample.madaReport.MadaReportsManagerUtils;
 
 public class Main {
-    public static final String csvPath = "src\\main\\resources\\MadaReports.csv";
+    public static final String csvMadaReportsPath = "src\\main\\resources\\MadaReports.csv";
     public static final String jsonDir = "mada_reports\\";
     public static final String jsonFileName = "MadaReports.json";
+
+    public static final String csvLabTestsPath = "src\\main\\resources\\LabTests.csv";
 
     public static void main(String[] args) {
         try {
             // Export
             MadaReportsManagerUtils managerUtils = new MadaReportsManagerUtils();
-            DataFileParser csvFileParser = new CSVFileParser(csvPath);
+            DataFileParser csvFileParser = new CSVFileParser(csvMadaReportsPath);
             MadaReportsManager madaReportsManager = managerUtils.
                     listsToMadaReportsManager(csvFileParser.parseDataFileToLists());
 
