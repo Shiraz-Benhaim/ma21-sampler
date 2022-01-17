@@ -6,7 +6,6 @@ import com.ma21Sample.madaReport.MadaReportsManager;
 import com.ma21Sample.madaReport.MadaReportsManagerUtils;
 
 import java.io.File;
-import java.io.IOException;
 
 public class JsonFileWriter extends DataFileWriter {
     final int MAX_RECORDS_IN_JSON_FILE = 50000;

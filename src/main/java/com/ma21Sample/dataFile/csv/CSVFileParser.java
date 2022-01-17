@@ -4,7 +4,6 @@ import com.ma21Sample.dataFile.DataFileParser;
 import com.ma21Sample.fileHandler.ReadFileContent;
 import com.ma21Sample.utils.StringSplitter;
 
-import java.io.IOException;
 import java.util.List;
 
 public class CSVFileParser extends DataFileParser {

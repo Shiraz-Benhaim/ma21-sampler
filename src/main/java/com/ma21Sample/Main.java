@@ -5,7 +5,6 @@ import com.ma21Sample.dataFile.DataFileWriter;
 import com.ma21Sample.dataFile.csv.CSVFileParser;
 import com.ma21Sample.dataFile.json.JsonFileWriter;
 import com.ma21Sample.fileHandler.CreateDirectory;
-import com.ma21Sample.madaReport.MadaReport;
 import com.ma21Sample.madaReport.MadaReportsManager;
 import com.ma21Sample.madaReport.MadaReportsManagerUtils;
 

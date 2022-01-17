@@ -20,5 +20,7 @@ public enum MadaReportFieldsIndex {
         this.index = index;
     }
 
-    public int getIndex() { return this.index; }
+    public int getIndex() {
+        return this.index;
+    }
 }

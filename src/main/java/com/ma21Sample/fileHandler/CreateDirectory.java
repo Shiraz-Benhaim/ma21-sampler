@@ -11,8 +11,8 @@ public class CreateDirectory {
     private String dirName;
 
     /*
-    * Function creates a directory if it does not exist
-    * */
+     * Function creates a directory if it does not exist
+     * */
     public void createDirIfNotExisting() {
         File dir = new File(this.dirName);
 

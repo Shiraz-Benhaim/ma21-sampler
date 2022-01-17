@@ -9,10 +9,10 @@ public class StringSplitter {
     private final String csvFieldsSeparator = ",";
 
     /*
-    * Splits a string that written in csv format, to list of items
-    * content - the string in csv format
-    * returns list of string arrays, that each of them is an item
-    * */
+     * Splits a string that written in csv format, to list of items
+     * content - the string in csv format
+     * returns list of string arrays, that each of them is an item
+     * */
     public List<String[]> splitStringInCsvFormat(String content) {
         List<String[]> result = new ArrayList<>();
         content = content.replace("\r", "");
