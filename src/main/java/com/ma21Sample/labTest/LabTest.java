@@ -15,7 +15,7 @@ public class LabTest {
     private String birthDate;
     private String labCode;
     private String stickerNumber;
-    private Integer resultTestCorona;
+    private ResultsTypesTestCorona resultTestCorona;
     private String variant;
     private String testType;
 }
