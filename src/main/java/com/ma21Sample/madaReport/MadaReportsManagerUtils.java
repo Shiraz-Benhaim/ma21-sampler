@@ -1,5 +1,7 @@
 package com.ma21Sample.madaReport;
 
+import com.ma21Sample.exceptions.FailedToParseDataFileException;
+
 import java.util.List;
 
 public class MadaReportsManagerUtils {
@@ -9,7 +11,7 @@ public class MadaReportsManagerUtils {
      * reportsData - the list with the information about the reports
      * returns a list of reports with ths information
      * */
-    public MadaReportsManager listsToMadaReportsManager(List<String[]> reportsData) {
+    public MadaReportsManager listsToMadaReportsManager(List<String[]> reportsData) throws FailedToParseDataFileException {
         MadaReportsManager reportsManager = new MadaReportsManager();
 
         try {
@@ -30,7 +32,7 @@ public class MadaReportsManagerUtils {
                 ));
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new FailedToParseDataFileException(e.getMessage(), e.getCause());
         }
 
         return reportsManager;
