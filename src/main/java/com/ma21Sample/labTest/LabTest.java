@@ -17,5 +17,5 @@ public class LabTest {
     private String stickerNumber;
     private ResultsTypesTestCorona resultTestCorona;
     private String variant;
-    private String testType;
+    private TestTypes testType;
 }
