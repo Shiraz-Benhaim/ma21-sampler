@@ -5,13 +5,14 @@ import com.ma21Sample.exceptions.CSVFileNotExistException;
 import com.ma21Sample.exceptions.FailedToParseDataFileException;
 import com.ma21Sample.fileHandler.ReadFileContent;
 import com.ma21Sample.utils.StringSplitter;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.List;
 
 public class CSVFileParser extends DataFileParser {
     public CSVFileParser(String srcFile) {
-        super(srcFile);
+        super(Logger.getLogger(CSVFileParser.class), srcFile);
     }
 
     @Override
@@ -22,10 +23,12 @@ public class CSVFileParser extends DataFileParser {
         try {
             ReadFileContent readFileContent = new ReadFileContent(super.srcFile);
             data = stringSplitter.splitStringInCsvFormat(readFileContent.readContent());
-
+            logger.info("the csv file extract successfully");
         } catch (IOException e) {
+            super.logger.error("CSV file not found");
             throw new CSVFileNotExistException(e.getMessage());
         } catch (Exception e) {
+            super.logger.error("Bad syntax of csv file");
             throw new FailedToParseDataFileException(e.getMessage(), e.getCause());
         }
 
