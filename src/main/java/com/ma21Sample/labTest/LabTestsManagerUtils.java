@@ -38,14 +38,14 @@ public class LabTestsManagerUtils {
                             record[LabTestFieldsIndex.VARIANT.getIndex()],
                             TestTypes.valueOf(record[LabTestFieldsIndex.TEST_TYPE.getIndex()])
                     ).build());
-                    this.logger.debug("The information was successfully converted to LabTests list");
                 } catch (InvalidIdException e) {
                     this.logger.warn("The id " + Integer.parseInt(record[LabTestFieldsIndex.ID_NUM.getIndex()])
                             + " is not valid. The test will not be added to the data file");
                 }
             }
+            this.logger.debug("The information was successfully converted to lab test's list");
         } catch (Exception e) {
-            this.logger.error("Bad syntax of lab tests records");
+            this.logger.error("Bad syntax of lab test's records");
             throw new FailedToParseDataFileException(e.getMessage(), e.getCause());
         }
 

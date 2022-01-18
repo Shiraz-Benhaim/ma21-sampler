@@ -1,12 +1,14 @@
 package com.ma21Sample.madaReport;
 
 import com.ma21Sample.exceptions.FailedToParseDataFileException;
-import com.ma21Sample.exceptions.FailedToWriteDataFileException;
 import com.ma21Sample.fieldEnums.IdTypes;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
 public class MadaReportsManagerUtils {
+    private final Logger logger = Logger.getLogger(MadaReportsManagerUtils.class);
+
     /*
      * Function convert a list of strings with the information about the
      *  reports to a list of reports (MadaReportsManager)
@@ -33,7 +35,9 @@ public class MadaReportsManagerUtils {
                         record[MadaReportFieldsIndex.RESULT_DATE.getIndex()]
                 ));
             }
+            this.logger.debug("The information was successfully converted to mada report's list");
         } catch (Exception e) {
+            this.logger.error("Bad syntax of mada report's records");
             throw new FailedToParseDataFileException(e.getMessage(), e.getCause());
         }
 
@@ -46,7 +50,7 @@ public class MadaReportsManagerUtils {
      * reportsInEachList - the number of reports in each of the new sub lists
      * returns list of lists of reports
      * */
-    public MadaReportsManager[] splitMadaReportsManager(MadaReportsManager reports, Integer reportsInEachList) throws FailedToWriteDataFileException {
+    public MadaReportsManager[] splitMadaReportsManager(MadaReportsManager reports, Integer reportsInEachList) {
         int numOfSplits = reports.numOfReports() / reportsInEachList +
                 (reports.numOfReports() % reportsInEachList == 0 ? 0 : 1); // for the rest
         MadaReportsManager[] subReportsManagers = new MadaReportsManager[numOfSplits];
