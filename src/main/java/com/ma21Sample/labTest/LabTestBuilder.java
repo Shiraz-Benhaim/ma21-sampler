@@ -3,7 +3,12 @@ package com.ma21Sample.labTest;
 import com.ma21Sample.fieldEnums.IdTypes;
 import com.ma21Sample.fieldEnums.ResultsTypesTestCorona;
 import com.ma21Sample.fieldEnums.TestTypes;
+import health_care_provider.HealthCareInfoProvider;
+import health_care_provider.errors.InvalidIdException;
+import health_care_provider.models.PersonInsured;
 import lombok.Data;
+
+import java.time.format.DateTimeFormatter;
 
 @Data
 public class LabTestBuilder {
@@ -24,8 +29,8 @@ public class LabTestBuilder {
     private String healthCareName = null;
 
     /*
-    * Constructor for all the attributes except of the external attributes
-    * */
+     * Constructor for all the attributes except of the external attributes
+     * */
     public LabTestBuilder(int idNum, IdTypes idType, String firstName, String lastName,
                           String resultDate, String birthDate, String labCode,
                           String stickerNumber, ResultsTypesTestCorona resultTestCorona,
@@ -59,7 +64,17 @@ public class LabTestBuilder {
     }
 
     public LabTest build() {
-        // TODO: Calculate the values of the external fields
+        HealthCareInfoProvider healthCareInfoProvider = new HealthCareInfoProvider();
+
+        try {
+            PersonInsured personInsured = healthCareInfoProvider.fetchInfo(this.idNum, this.idType.getType());
+
+            this.joinDate = personInsured.getJoinDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            this.healthCareId = personInsured.getHealthCareId();
+            this.healthCareName = personInsured.getHealthCareName();
+        } catch (InvalidIdException e) {
+        }    // Keep the external attributes null
+
         return new LabTest(this);
     }
 }
