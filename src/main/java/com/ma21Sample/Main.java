@@ -4,6 +4,7 @@ import com.ma21Sample.dataFile.DataFileParser;
 import com.ma21Sample.dataFile.DataFileWriter;
 import com.ma21Sample.dataFile.csv.CSVFileParser;
 import com.ma21Sample.dataFile.json.JsonFileWriter;
+import com.ma21Sample.dataFile.xml.XmlFileWriter;
 import com.ma21Sample.fileHandler.CreateDirectory;
 import com.ma21Sample.labTest.LabTest;
 import com.ma21Sample.labTest.LabTestsManager;
@@ -17,8 +18,11 @@ public class Main {
     public static final String jsonFileName = "MadaReports.json";
 
     public static final String csvLabTestsPath = "src\\main\\resources\\LabTests.csv";
+    public static final String xmlDir = "mada_reports\\";
+    public static final String xmlFileName = "lab_tests.xml";
 
     public static void main(String[] args) {
+        // Part A
         /*
         try {
             // Export
@@ -45,6 +49,13 @@ public class Main {
             DataFileParser csvFileParser = new CSVFileParser(csvLabTestsPath);
             LabTestsManager labTestsManager = utils.
                     listsToLabTestsManager(csvFileParser.parseDataFileToLists());
+
+            // Load
+            CreateDirectory createDirectory = new CreateDirectory(xmlDir);
+            createDirectory.createDirIfNotExisting();
+
+            DataFileWriter xmlFileWriter = new XmlFileWriter(xmlDir + xmlFileName, labTestsManager);
+            xmlFileWriter.writeObjectToDataFile();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

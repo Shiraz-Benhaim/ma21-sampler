@@ -24,6 +24,15 @@ public class LabTest {
     private Integer healthCareId;
     private String healthCareName;
 
+    // Getters to the numeric enums
+    public Integer getIdType() {
+        return this.idType.getType();
+    }
+    
+    public Integer getResultTestCorona() {
+        return this.resultTestCorona.getResult();
+    }
+
     /*
     * Constructor to the builder of this class
     * */
