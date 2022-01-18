@@ -2,9 +2,11 @@ package com.ma21Sample.dataFile.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ma21Sample.dataFile.DataFileWriter;
+import com.ma21Sample.dataFile.csv.CSVFileParser;
 import com.ma21Sample.exceptions.FailedToWriteDataFileException;
 import com.ma21Sample.madaReport.MadaReportsManager;
 import com.ma21Sample.madaReport.MadaReportsManagerUtils;
+import org.apache.log4j.Logger;
 
 import java.io.File;
 
@@ -14,7 +16,7 @@ public class JsonFileWriter extends DataFileWriter {
     private MadaReportsManager reportsManager;
 
     public JsonFileWriter(String dstFile, MadaReportsManager madaReportsManager) {
-        super(dstFile);
+        super(Logger.getLogger(JsonFileWriter.class), dstFile);
         this.reportsManager = madaReportsManager;
     }
 
@@ -43,7 +45,9 @@ public class JsonFileWriter extends DataFileWriter {
                         super.dstFile.substring(0, super.dstFile.lastIndexOf(".")) + (i + 1) + ".json";
                 objectMapper.writeValue(new File(currPathName), madaReportsManagers[i]);
             }
+            super.logger.info("The information was written to the json file successfully");
         } catch (Exception e) {
+            super.logger.error("The information was not written to the json file");
             throw new FailedToWriteDataFileException(e.getMessage(), e.getCause());
         }
     }
