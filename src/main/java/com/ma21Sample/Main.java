@@ -19,7 +19,7 @@ public class Main {
     public static final String jsonFileName = "MadaReports.json";
 
     public static final String csvLabTestsPath = "src\\main\\resources\\LabTests.csv";
-    public static final String xmlDir = "mada_reports\\";
+    public static final String xmlDir = "LABTESTS\\";
     public static final String xmlFileName = "lab_tests.xml";
 
     public static final Logger logger = Logger.getLogger(Main.class);
@@ -51,7 +51,7 @@ public class Main {
         try {
             // Export
             LabTestsManagerUtils utils = new LabTestsManagerUtils();
-            DataFileParser csvFileParser = new CSVFileParser(csvLabTestsPath + "rgd");
+            DataFileParser csvFileParser = new CSVFileParser(csvLabTestsPath);
             LabTestsManager labTestsManager = utils.
                     listsToLabTestsManager(csvFileParser.parseDataFileToLists());
 
