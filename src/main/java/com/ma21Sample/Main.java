@@ -11,6 +11,7 @@ import com.ma21Sample.labTest.LabTestsManager;
 import com.ma21Sample.labTest.LabTestsManagerUtils;
 import com.ma21Sample.madaReport.MadaReportsManager;
 import com.ma21Sample.madaReport.MadaReportsManagerUtils;
+import org.apache.log4j.Logger;
 
 public class Main {
     public static final String csvMadaReportsPath = "src\\main\\resources\\MadaReports.csv";
@@ -21,7 +22,11 @@ public class Main {
     public static final String xmlDir = "mada_reports\\";
     public static final String xmlFileName = "lab_tests.xml";
 
+    public static final Logger logger = Logger.getLogger(Main.class);
+
     public static void main(String[] args) {
+        logger.debug("Program Started");
+
         // Part A
         /*
         try {
@@ -46,7 +51,7 @@ public class Main {
         try {
             // Export
             LabTestsManagerUtils utils = new LabTestsManagerUtils();
-            DataFileParser csvFileParser = new CSVFileParser(csvLabTestsPath);
+            DataFileParser csvFileParser = new CSVFileParser(csvLabTestsPath + "rgd");
             LabTestsManager labTestsManager = utils.
                     listsToLabTestsManager(csvFileParser.parseDataFileToLists());
 
