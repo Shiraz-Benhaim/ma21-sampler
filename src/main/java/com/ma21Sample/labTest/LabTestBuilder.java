@@ -63,17 +63,13 @@ public class LabTestBuilder {
         return this;
     }
 
-    public LabTest build() {
+    public LabTest build() throws InvalidIdException {
         HealthCareInfoProvider healthCareInfoProvider = new HealthCareInfoProvider();
+        PersonInsured personInsured = healthCareInfoProvider.fetchInfo(this.idNum, this.idType.getType());
 
-        try {
-            PersonInsured personInsured = healthCareInfoProvider.fetchInfo(this.idNum, this.idType.getType());
-
-            this.joinDate = personInsured.getJoinDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-            this.healthCareId = personInsured.getHealthCareId();
-            this.healthCareName = personInsured.getHealthCareName();
-        } catch (InvalidIdException e) {
-        }    // Keep the external attributes null
+        this.joinDate = personInsured.getJoinDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.healthCareId = personInsured.getHealthCareId();
+        this.healthCareName = personInsured.getHealthCareName();
 
         return new LabTest(this);
     }
