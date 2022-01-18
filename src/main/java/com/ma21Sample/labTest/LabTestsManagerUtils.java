@@ -1,9 +1,11 @@
 package com.ma21Sample.labTest;
 
 import com.ma21Sample.exceptions.FailedToParseDataFileException;
+import com.ma21Sample.exceptions.FailedToWriteDataFileException;
 import com.ma21Sample.fieldEnums.ResultsTypesTestCorona;
 import com.ma21Sample.fieldEnums.IdTypes;
 import com.ma21Sample.fieldEnums.TestTypes;
+import com.ma21Sample.madaReport.MadaReportsManager;
 
 import java.util.List;
 
@@ -39,5 +41,30 @@ public class LabTestsManagerUtils {
         }
 
         return labTestsManager;
+    }
+
+    /*
+     * Function split a list of lab tests results to sub lists
+     * cars - the list of all results
+     * resultsInEachList - the number of results in each of the new sub lists
+     * returns list of lists of results
+     * */
+    public LabTestsManager[] splitLabTestsManager(LabTestsManager results, Integer resultsInEachList) throws FailedToWriteDataFileException {
+        int numOfSplits = results.numOfResults() / resultsInEachList +
+                (results.numOfResults() % resultsInEachList == 0 ? 0 : 1); // for the rest
+        LabTestsManager[] subResultsManagers = new LabTestsManager[numOfSplits];
+        int currEnd;
+
+        for (int i = 0; i < numOfSplits; i++) {
+            currEnd = (i + 1) * resultsInEachList;
+            if (currEnd >= results.numOfResults()) {
+                currEnd = results.numOfResults() - 1;
+            }
+            subResultsManagers[i] = new LabTestsManager(
+                    results.getResults().subList(i * resultsInEachList, currEnd)
+            );
+        }
+
+        return subResultsManagers;
     }
 }
